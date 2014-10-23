@@ -6,22 +6,22 @@
     Makes a user friendly error message from a ValidationError.
 
 """
-import logging
 import json
 import cStringIO
 
-from jsonschema import validate as _validate
+from jsonschema import validate
 from jsonschema import FormatChecker, ValidationError
 
-log = logging.getLogger("jsonschemaerror")
 
-
-def check_json(json_object, schema, media_type_name="?"):
+def check_json(json_object, schema, context=None):
     try:
-        _validate(json_object, schema, format_checker=FormatChecker())
+        validate(json_object, schema, format_checker=FormatChecker())
     except ValidationError as e:
         report = generate_validation_error_report(e, json_object)
-        return "Schema check failed for '%s'\n%s" % (media_type_name, report)
+        if context:
+            return "Schema check failed for '{}'\n{}".format(context, report)
+        else:
+            return "Schema check failed.\n{}".format(report)
 
 
 def generate_validation_error_report(
@@ -47,7 +47,7 @@ def generate_validation_error_report(
     """
 
     if json_object is None:
-        return "Request requires a JSON body"
+        return "'json_object' cannot be None."
     if not e.path:
         return str(e)
     marker = "3fb539deef7c4e2991f265c0a982f5ea"
