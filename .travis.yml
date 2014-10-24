@@ -2,7 +2,8 @@ language: python
 python:
   - '2.7'
 install:
-  - python setup.py -q install
+  - python setup.py sdist --formats=zip
+  - find ./dist -iname "*.zip" -print0 | xargs -0 pip install
 notifications:
   email:
     recipients:
