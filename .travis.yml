@@ -1,12 +1,12 @@
 language: python
 python:
-- '2.7'
+  - '2.7'
 install:
   - python setup.py -q install
 notifications:
   email:
     recipients:
-    - matti@ccpgames.com
+      - matti@ccpgames.com
     on_success: change
     on_failure: always
 
@@ -14,4 +14,5 @@ addons:
   artifacts:
     key: "AKIAIUW36UNJJPK5C6MA"
     secret: "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"
-    bucket: "vkb-builds
+    bucket: "vkb-builds"
+
