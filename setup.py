@@ -1,4 +1,3 @@
-import sys
 from setuptools import setup
 
 setup(
@@ -18,6 +17,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     platforms=['any'],
+    install_requires = ['jsonschema'],
     download_url='https://github.com/ccpgames/jsonschema-errorprinter/archive/master.zip',
     url='https://github.com/ccpgames/jsonschema-errorprinter',
 )

@@ -1,0 +1,15 @@
+language: python
+python:
+- '2.7'
+notifications:
+  email:
+    recipients:
+    - matti@ccpgames.com
+    on_success: change
+    on_failure: always
+
+addons:
+  artifacts:
+    key: "AKIAIUW36UNJJPK5C6MA"
+    secret: "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"
+    bucket: "vkb-builds
